@@ -1,0 +1,14 @@
+<html>
+    <head>
+	    <title>
+		      SVPS :-TextBox Example
+	    </title>
+	</head>
+	<body>
+	                <from Name="form1" Method="post" Action="">
+					      < Name="text1" Type="text">
+						  
+					</form>
+		</body>
+</html>		
+					
