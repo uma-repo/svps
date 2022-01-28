@@ -1,0 +1,1 @@
+create table students(studid varchar(50),Name varchar(50),Surname varchar(50),Phno varchar(50),Fromyear varchar(50),Toyear varchar(50),Fromclass varchar(50),Toclass varchar(50),comments varchar(500));
