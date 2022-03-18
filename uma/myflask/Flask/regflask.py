@@ -1,20 +1,25 @@
-from flask import Flask,request , render_template
+from distutils.log import error
+from flask import *
 import mysql.connector
 
 app = Flask(__name__)
-@app.route("/",  methods=["POST" , "GET"])
+@app.route("/",  methods=["GET" , "POST"])
 def form():
     print("rendering home")
     return render_template("regform.html" , content = "Flask")
 
-@app.route("/form" , methods=["POST" , "GET"])
-def home():
+   
+
+@app.route("/add_data" , methods=["GET" , "POST"])
+def add_data():
     print("test1")
+    print(request.method)
     if request.method == 'POST':
         print("check")
+        print(request.form)
         user = request.form['fname']
-        print("name is:" +user)
         suname = request.form['sname']
+        print("name is:" +user)
         print("surname is:"+suname)
         pno = request.form['phno']
         print("phno is:"+pno)
@@ -33,12 +38,28 @@ def home():
             conn.commit()
         except:
             conn.rollback()
-        print("Data inserted")
+        print("Data inserted") 
         conn.close()
-
-        ##mysql code ends
+          ##mysql code ends
     print("Text rendering:")
-    return render_template("form.html" , content = "Flask")
+    return render_template("transactions.html" , msg_var = "Successfully Registered")
+  
 
+      
+@app.route("/transactions",  methods=["POST" , "GET"])
+def transactions():
+    msg = ""
+    if request.method == 'POST':
+        print('req method is post')
+        add_data()
+        msg = "Successfully Inserted"
+    return render_template("transactions.html", msg_var= msg)
+
+
+
+
+
+        
+        
 if __name__=="__main__":
     app.run(debug = True)

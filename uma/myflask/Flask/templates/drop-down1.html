@@ -1,0 +1,55 @@
+<!DOCITYPE html>
+<html>
+<head>
+<style>
+body {
+    background-image: url(static/bckphoto.jpg); background-repeat: no-repeat;background-position: 75% 1%
+}
+</style>
+</head>
+<body>
+
+       <head>SVPS</head>
+	   <body>
+	             <h1>SRI VENKATESWARA PRIMARY SCHOOL</h1>
+				
+				  <label for="fname">First name: </label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="sname">Sur name: </label>
+        <input type="text" id="sname" name="sname"><br><br>
+		<label for="phno">Phone no:</label>
+		<input type="text" id="phoneno" name="phno"><br><br>
+        
+				 <form action="/transactions" method="post">
+				         <label for="fyear">From year: </label>
+				         <select year="from year">
+						       <option value="yyyy">yyyy</option>						 
+				               <option value="1980">1980</option>
+							   </select> &nbsp;&nbsp;&nbsp;
+						<label for="tyear">To year: </label>
+						<select year="to year">
+						       <option value="yyyy"> yyyy</option>
+						       <option value="1980">1980</option>
+							   
+						</select>&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="fyear">From class: </label>
+				         <select year="from class">
+						       <option value="Nursery">Nursery</option>"
+							   
+						</select> &nbsp;&nbsp;&nbsp;
+					    <label for="tyear">To class: </label>
+						<select year="to class">	   
+							   <option value="Nursery">Nursery</option>"
+						</select>	   
+						<br><br>
+						enter your comment <br>
+                       <textarea name="comment" rows="10" cols="40"
+                        maxlength="100">
+                       </textarea> <br><br>
+					   
+				
+				<input type="button" value="Submit">
+               <p>click submit button to submit your details</p>
+			   </form>
+		</body>	
+</html>			
