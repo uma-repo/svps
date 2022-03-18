@@ -52,8 +52,8 @@ def transactions():
     if request.method == 'POST':
         print('req method is post')
         add_data()
-        msg = "Successfully Inserted"
-    return render_template("transactions.html", msg_var= msg)
+        msg = "Successfully Registered"
+    return render_template("transactions-hoverinput.html", msg_var= msg)
 
 
 
@@ -62,4 +62,4 @@ def transactions():
         
         
 if __name__=="__main__":
-    app.run(debug = True)
+    app.run(host='0.0.0.0',port=80,debug = True)
