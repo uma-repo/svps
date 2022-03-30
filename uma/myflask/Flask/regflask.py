@@ -39,12 +39,12 @@ def add_data():
            # cursor.execute(insert_stmt, data)
            #conn.commit()
             c =  gtstdnt(user,suname)
-             
+            msg_var = "unable to register!please try later "
+            print(c)
             if (len(c)>0):
                 msg_var = "successfully registerd1"
                 print(msg_var)
             else:
-                msg_var = "unable to register!please try later "
                 print(msg_var)
     
 
@@ -57,7 +57,7 @@ def add_data():
         conn.close()
           ##mysql code ends
     print("Text rendering:"+msg_var)
-    return render_template("transactions.html",reg_msg = "msg_var")
+    return msg_var
 
 def gtstdnt(fname,sname):
     conn = mysql.connector.connect(user='root', password='Pass@123', host='127.0.0.1', database='svps1')
@@ -82,9 +82,9 @@ def transactions():
     msg = ""
     if request.method == 'POST':
         print('req method is post')
-        add_data()   
-        msg = "Successfully Registered"
-    return render_template("transactions-hoverinput.html" , msg_var = msg)
+        msg = add_data()
+        #msg="sec"
+    return render_template("transactions-hoverinput.html" , reg_msg = msg)
 
 
 if __name__=="__main__":
