@@ -1,4 +1,5 @@
 from distutils.log import error
+from webbrowser import get
 from flask import *
 import mysql.connector
 
@@ -31,24 +32,21 @@ def add_data():
         tclas = request.form['tclas']
         cmt = request.form['comment']
         ##mysql code start
-        conn = mysql.connector.connect(user='root', password='Pass@123', host='127.0.0.1', database='svps1')
+        conn = mysql.connector.connect(user='root', password='root', host='172.17.0.2', database='svps1')
         cursor = conn.cursor()
         insert_stmt = ("INSERT INTO students (studid, Name,Surname,phno,Fromyear,Toyear,Fromclass,Toclass,comments) VALUES (%s, %s, %s, %s, %s,%s,%s,%s,%s)")
         data = ('01', user, suname,pno,fmyear,toyear,fclas,tclas,cmt)
         try:
-           # cursor.execute(insert_stmt, data)
-           #conn.commit()
+            cursor.execute(insert_stmt, data)
+            conn.commit()
             c =  gtstdnt(user,suname)
             msg_var = "unable to register!please try later "
             print(c)
             if (len(c)>0):
-                msg_var = "successfully registerd1"
+                msg_var = "successfully registered"
                 print(msg_var)
             else:
-                print(msg_var)
-    
-
-            
+                print(msg_var)        
         except Exception as e : 
             print("exception occured")
             print(str(e))
@@ -58,6 +56,7 @@ def add_data():
           ##mysql code ends
     print("Text rendering:"+msg_var)
     return msg_var
+
 
 def gtstdnt(fname,sname):
     conn = mysql.connector.connect(user='root', password='Pass@123', host='127.0.0.1', database='svps1')
@@ -75,6 +74,35 @@ def gtstdnt(fname,sname):
         print("check return1")
     return ret_rows
 
+def getAllStudents():
+    conn = mysql.connector.connect(user='root', password='Pass@123', host='127.0.0.1', database='svps1')
+    cursor = conn.cursor()
+    print("getting all students details")
+    stmt = "select Name , Surname ,Phno from students "
+    print(stmt)
+    cursor.execute(stmt)
+    studetails = cursor.fetchall()
+    print("details: " +str(studetails))
+
+    for detail in studetails:
+        print(detail)   
+    return studetails
+
+
+@app.route("/studentsList" , methods=["GET" , "POST"])
+def students():
+    stlist1 = getAllStudents()
+    print("")
+    print("")
+    print("")
+    print("")
+    print(stlist1)
+    print("")
+    print("")
+    print("")
+    print("")
+    return render_template("studentlist.html" , std_list = stlist1)
+
 
               
 @app.route("/transactions",  methods=["POST" , "GET"])
@@ -85,6 +113,12 @@ def transactions():
         msg = add_data()
         #msg="sec"
     return render_template("transactions-hoverinput.html" , reg_msg = msg)
+
+@app.route("/Gallery", methods=["POST" , "GET"] )
+def gallery():
+    print("show gallery")
+    return render_template ("photogallery.html")
+
 
 
 if __name__=="__main__":
