@@ -59,7 +59,7 @@ def add_data():
 
 
 def gtstdnt(fname,sname):
-    conn = mysql.connector.connect(user='root', password='Pass@123', host='127.0.0.1', database='svps1')
+    conn = mysql.connector.connect(user='root', password='root', host='172.17.0.2', database='svps1')
     cursor = conn.cursor()
     print("checking cursor")
     stmt = "select * from  students where Name = '" + fname + "' and Surname = '" + sname +"'"
@@ -75,7 +75,7 @@ def gtstdnt(fname,sname):
     return ret_rows
 
 def getAllStudents():
-    conn = mysql.connector.connect(user='root', password='Pass@123', host='127.0.0.1', database='svps1')
+    conn = mysql.connector.connect(user='root', password='root', host='172.17.0.2', database='svps1')
     cursor = conn.cursor()
     print("getting all students details")
     stmt = "select Name , Surname ,Phno from students "

@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     python3-setuptools
 RUN python3.7 -m pip install pip --upgrade pip
 RUN apt-get install -y git
-RUN git clone https://github.com/uma-repo/svps.git
+RUN git clone --single-branch --branch brr1 https://github.com/uma-repo/svps.git
 RUN ls svps
 WORKDIR /svps/uma/myflask/Flask
 RUN python3 -m pip install flask
