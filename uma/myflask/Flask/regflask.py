@@ -32,7 +32,7 @@ def add_data():
         tclas = request.form['tclas']
         cmt = request.form['comment']
         ##mysql code start
-        conn = mysql.connector.connect(user='root', password='root', host='172.17.0.2', database='svps1')
+        conn = mysql.connector.connect(user='root', password='root', host='172.17.0.3', database='svps1')
         cursor = conn.cursor()
         insert_stmt = ("INSERT INTO students (studid, Name,Surname,phno,Fromyear,Toyear,Fromclass,Toclass,comments) VALUES (%s, %s, %s, %s, %s,%s,%s,%s,%s)")
         data = ('01', user, suname,pno,fmyear,toyear,fclas,tclas,cmt)
@@ -59,7 +59,7 @@ def add_data():
 
 
 def gtstdnt(fname,sname):
-    conn = mysql.connector.connect(user='root', password='root', host='172.17.0.2', database='svps1')
+    conn = mysql.connector.connect(user='root', password='root', host='172.17.0.3', database='svps1')
     cursor = conn.cursor()
     print("checking cursor")
     stmt = "select * from  students where Name = '" + fname + "' and Surname = '" + sname +"'"
@@ -75,7 +75,7 @@ def gtstdnt(fname,sname):
     return ret_rows
 
 def getAllStudents():
-    conn = mysql.connector.connect(user='root', password='root', host='172.17.0.2', database='svps1')
+    conn = mysql.connector.connect(user='root', password='root', host='172.17.0.3', database='svps1')
     cursor = conn.cursor()
     print("getting all students details")
     stmt = "select Name , Surname ,Phno from students "
