@@ -1,7 +1,0 @@
-enter your comment <br>
-<text area name="comment" rows="10" cols="40"
-maxlength="100">
-</text area>
-</form>
-</body>
-</html>

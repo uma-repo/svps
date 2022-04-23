@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html>
-<title>font style</title>
-<body>
-<h1 style="font-family:verdana;">This is one type of FONT</h1>
-<h1 style="font-family:ariai;">svps</h2>
-<p style="font-family:courier;">This is anther FONT</p>
-</body>
-</html>
